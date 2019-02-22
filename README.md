@@ -2,6 +2,11 @@
 
 Create interactive patterns
 
+## Development
+
+1. run `yarn` in the project root to install dependencies
+2. run `yarn workspace playground develop`
+
 
 ## License
 
