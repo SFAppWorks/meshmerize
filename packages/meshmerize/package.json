@@ -1,0 +1,20 @@
+{
+  "name": "meshmerize",
+  "version": "0.0.1",
+  "description": "Interractive pattern generation component",
+  "main": "index.js",
+  "author": "horia.ancas@sfappworks.com",
+  "license": "MIT",
+  "devDependencies": {
+    "proptypes": "^1.1.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "dependencies": {
+    "styled-components": "^4.1.3"
+  }
+}
