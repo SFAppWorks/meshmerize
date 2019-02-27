@@ -1,6 +1,7 @@
 # Meshmerize
 
-Create interactive patterns
+*Create interactive patterns*
+(patterns)[https://raw.githubusercontent.com/SFAppWorks/meshmerize/master/playground/src/images/patterns.png]
 
 ## Development
 
