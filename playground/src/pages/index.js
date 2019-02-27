@@ -42,13 +42,14 @@ const IndexPage = () => (
       columns="5"
       rows="5"
       cellWidth="80px"
-      cellHeight="80px">
+      cellHeight="80px"
+      cellPadding="10px">
 
-      <OpacityTransform>
+      <OpacityTransform align="top right">
         <DomLine />
       </OpacityTransform>
 
-      <RotateTransform deg="90">
+      <RotateTransform deg="90" align="bottom left">
         <DomLine />
       </RotateTransform>
 

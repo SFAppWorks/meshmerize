@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const Meshmerize = props => {
   const allCells = Array.from(Array(props.columns * props.rows))
   const childrenCount = React.Children.count(props.children)
+
   return (
     <div className={props.className}>
       {allCells.map((_, i) => {
@@ -26,9 +27,9 @@ const StyledMeshmerize = styled(Meshmerize)`
   > * {
     width: ${props => props.cellWidth || props.cellHeight};
     height: ${props => props.cellHeight || props.cellWidth};
+    padding: ${props => props.cellPadding};
     display: flex;
-    justify-content: center;
-    align-items: center;
+    box-sizing: border-box;
   }
 `
 
@@ -37,6 +38,7 @@ Meshmerize.propTypes = {
   rows: PropTypes.string,
   cellWidth: PropTypes.string,
   cellHeight: PropTypes.string,
+  cellPadding: PropTypes.string,
 }
 
 export default StyledMeshmerize
