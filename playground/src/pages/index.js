@@ -1,8 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import {
   Meshmerize,
   OpacityTransform,
   RotateTransform,
+  BaseTransform,
 } from 'meshmerize'
 
 import SEO from '../components/seo'
@@ -18,30 +21,53 @@ const Circle = () => (
   </svg>
 )
 
+const DomCircle = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: #ccc;
+`
+
+const DomLine = styled.div`
+  width: 25px;
+  height: 5px;
+  border-radius: 5px;
+  background: #f92;
+`
+
 const IndexPage = () => (
   <>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-  <Meshmerize
-    width="10"
-    height="4"
-    rowSize="2">
+    <Meshmerize
+      columns="5"
+      rows="5"
+      cellWidth="80px"
+      cellHeight="80px">
+
       <OpacityTransform>
-        <RotateTransform deg="45">
-          <Arrow />
-        </RotateTransform>
+        <DomLine />
       </OpacityTransform>
 
-      <RotateTransform deg="180">
-        <Arrow />
+      <RotateTransform deg="90">
+        <DomLine />
       </RotateTransform>
 
-      <OpacityTransform>
-        <Arrow />
-      </OpacityTransform>
+    </Meshmerize>
+
+    <Meshmerize
+      columns="5"
+      rows="5"
+      cellWidth="80px"
+      cellHeight="80px">
 
       <OpacityTransform>
-        <Arrow />
+        <DomCircle />
       </OpacityTransform>
+
+      <BaseTransform deg="90">
+        <DomCircle />
+      </BaseTransform>
+
     </Meshmerize>
   </>
 )

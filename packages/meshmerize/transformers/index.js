@@ -1,4 +1,5 @@
 export {
   OpacityTransform,
-  RotateTransform
+  RotateTransform,
+  BaseTransform,
 } from './transformers'
