@@ -8,13 +8,22 @@ const Meshmerize = props => {
 
   return (
     <div className={props.className}>
-      {allCells.map((_, i) => {
-        if (childrenCount === 1) {
-          return props.children
+      {allCells.map((_, index) => {
+        const extraProps = {
+          index,
         }
-        const currentChildIndex = i % childrenCount
+        if (childrenCount === 1) {
+          return React.cloneElement(
+            props.children,
+            extraProps
+          )
+        }
+        const currentChildIndex = index % childrenCount
         const CurrentChild = props.children[currentChildIndex]
-        return CurrentChild
+        return React.cloneElement(
+          CurrentChild,
+          extraProps
+        )
       })}
     </div>
   )

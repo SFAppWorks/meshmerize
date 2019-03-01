@@ -3,9 +3,11 @@ import styled from 'styled-components'
 
 import {
   Meshmerize,
+  BaseTransform,
   OpacityTransform,
   RotateTransform,
-  BaseTransform,
+  ScaleTransform,
+
 } from 'meshmerize'
 
 import SEO from '../components/seo'
@@ -39,35 +41,48 @@ const IndexPage = () => (
   <>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Meshmerize
-      columns="5"
-      rows="5"
+      columns="8"
+      rows="8"
       cellWidth="80px"
       cellHeight="80px"
       cellPadding="10px">
 
-      <OpacityTransform align="top right">
-        <DomLine />
-      </OpacityTransform>
-
-      <RotateTransform deg="90" align="bottom left">
-        <DomLine />
+      <RotateTransform deg={i => 25 * i}>
+        <OpacityTransform>
+          <DomLine />
+        </OpacityTransform>
       </RotateTransform>
 
     </Meshmerize>
 
     <Meshmerize
-      columns="5"
-      rows="5"
-      cellWidth="80px"
-      cellHeight="80px">
+      columns="40"
+      rows="10"
+      cellWidth="30px"
+      cellHeight="30px">
 
       <OpacityTransform>
-        <DomCircle />
+        <ScaleTransform size={i => Math.random().toFixed(2)}>
+          <DomCircle />
+        </ScaleTransform>
       </OpacityTransform>
 
-      <BaseTransform deg="90">
-        <DomCircle />
-      </BaseTransform>
+    </Meshmerize>
+
+    <Meshmerize
+      columns="8"
+      rows="8"
+      cellWidth="80px"
+      cellHeight="80px"
+      cellPadding="10px">
+
+      <OpacityTransform align="bottom right">
+        <DomLine />
+      </OpacityTransform>
+
+      <OpacityTransform align="bottom left">
+        <DomLine />
+      </OpacityTransform>
 
     </Meshmerize>
   </>

@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 
 const verticalMap = {
@@ -29,10 +30,29 @@ export const BaseTransform = styled.div`
   align-items: ${alignVertical};
 `
 
-export const OpacityTransform = styled(BaseTransform)`
-  opacity: ${Math.floor(Math.random() * 100) / 100};
-`
+export const RotateTransform = props => {
+  const transform = `rotate(${props.deg(props.index)}deg)`
+  return (
+    <BaseTransform {...props} style={{ transform }}>
+      {props.children}
+    </BaseTransform>
+  )
+}
 
-export const RotateTransform = styled(BaseTransform)`
-  transform: ${props => `rotate(${props.deg}deg)`}
-`
+export const ScaleTransform = props => {
+  const transform = `scale(${props.size(props.index)})`
+  return (
+    <BaseTransform {...props} style={{ transform }}>
+      {props.children}
+    </BaseTransform>
+  )
+}
+
+export const OpacityTransform = props => {
+  const opacity = Math.floor(Math.random() * 100) / 100
+  return (
+    <BaseTransform {...props} style={{ opacity }}>
+      {props.children}
+    </BaseTransform>
+  )
+}
