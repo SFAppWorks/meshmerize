@@ -11,6 +11,7 @@ const Meshmerize = props => {
       {allCells.map((_, index) => {
         const extraProps = {
           index,
+          key: `item${index}`
         }
         if (childrenCount === 1) {
           return React.cloneElement(

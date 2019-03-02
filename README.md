@@ -1,4 +1,3 @@
-## Create interactive patterns
 ![patterns](https://raw.githubusercontent.com/SFAppWorks/meshmerize/master/playground/src/images/meshmerize.png)
 
 ## Development

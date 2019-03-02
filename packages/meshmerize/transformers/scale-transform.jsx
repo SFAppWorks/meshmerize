@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 
 import { BaseTransform } from './base-transform'
 
-export const ScaleTransform = props => {
-  const transform = `scale(${props.size(props.index)})`
+export const ScaleTransform = ({ index, size, children, ...otherProps }) => {
+  const transform = `scale(${size(index)})`
   return (
-    <BaseTransform {...props} style={{ transform }}>
-      {props.children}
+    <BaseTransform {...otherProps} style={{ transform }}>
+      {children}
     </BaseTransform>
   )
 }
 
 ScaleTransform.propTypes = {
-  size: PropTypes.func.isRequired
+  index: PropTypes.number.isRequired,
+  size: PropTypes.func.isRequired,
+  children: PropTypes.children,
 }
