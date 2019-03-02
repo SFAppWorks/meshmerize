@@ -3,11 +3,9 @@ import styled from 'styled-components'
 
 import {
   Meshmerize,
-  BaseTransform,
   OpacityTransform,
   RotateTransform,
   ScaleTransform,
-
 } from 'meshmerize'
 
 import SEO from '../components/seo'
@@ -49,7 +47,9 @@ const IndexPage = () => (
 
       <RotateTransform deg={i => 25 * i}>
         <OpacityTransform>
-          <DomLine />
+          <ScaleTransform size={i => Math.random().toFixed(2)}>
+            <DomLine />
+          </ScaleTransform>
         </OpacityTransform>
       </RotateTransform>
 
