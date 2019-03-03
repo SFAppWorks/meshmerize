@@ -11,8 +11,3 @@ export const OpacityTransform = ({ index, children, ...otherProps }) => {
     </BaseTransform>
   )
 }
-
-OpacityTransform.propTypes = {
-  index: PropTypes.number.isRequired,
-  children: PropTypes.children,
-}

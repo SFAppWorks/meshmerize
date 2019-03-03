@@ -11,9 +11,3 @@ export const ScaleTransform = ({ index, size, children, ...otherProps }) => {
     </BaseTransform>
   )
 }
-
-ScaleTransform.propTypes = {
-  index: PropTypes.number.isRequired,
-  size: PropTypes.func.isRequired,
-  children: PropTypes.children,
-}

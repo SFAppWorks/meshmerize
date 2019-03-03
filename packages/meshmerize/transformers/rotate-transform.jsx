@@ -11,9 +11,3 @@ export const RotateTransform = ({ index, deg, children, ...otherProps }) => {
     </BaseTransform>
   )
 }
-
-RotateTransform.propTypes = {
-  index: PropTypes.number.isRequired,
-  deg: PropTypes.func.isRequired,
-  children: PropTypes.children,
-}
