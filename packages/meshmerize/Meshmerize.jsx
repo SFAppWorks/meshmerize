@@ -43,12 +43,4 @@ const StyledMeshmerize = styled(Meshmerize)`
   }
 `
 
-Meshmerize.propTypes = {
-  columns: PropTypes.string,
-  rows: PropTypes.string,
-  cellWidth: PropTypes.string,
-  cellHeight: PropTypes.string,
-  cellPadding: PropTypes.string,
-}
-
 export default StyledMeshmerize

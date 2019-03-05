@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import {
@@ -7,8 +7,7 @@ import {
   RotateTransform,
   ScaleTransform,
 } from 'meshmerize'
-
-import SEO from '../components/seo'
+import Sidebar from '../components/sidebar'
 
 const Arrow = () => (
   <svg viewBox="0 0 492 492">
@@ -21,13 +20,6 @@ const Circle = () => (
   </svg>
 )
 
-const DomCircle = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  background: #ccc;
-`
-
 const DomLine = styled.div`
   width: 25px;
   height: 5px;
@@ -35,57 +27,142 @@ const DomLine = styled.div`
   background: #f92;
 `
 
-const IndexPage = () => (
-  <>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Meshmerize
-      columns="8"
-      rows="8"
-      cellWidth="80px"
-      cellHeight="80px"
-      cellPadding="10px">
+const DomCircle = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: #ccc;
+`
 
-      <RotateTransform deg={i => 25 * i}>
+const SampleChildren = {
+  DomLine,
+  DomCircle,
+  Arrow,
+}
+
+const IndexPage = () => {
+  const [columns, setColumns] = useState(8)
+  const [rows, setRows] = useState(5)
+  const [cellWidth, setCellWidth] = useState(80)
+  const [cellHeight, setCellHeight] = useState(80)
+  const [cellPadding, setCellPadding] = useState(10)
+  const [selectedChild, setSelectedChild] = useState('DomLine')
+  const SelectedChild = SampleChildren[selectedChild]
+
+  return (
+    <>
+      <Sidebar>
+        <p>
+          <select
+            name="selected-child"
+            value={selectedChild}
+            onChange={e => setSelectedChild(e.target.value)}>
+            {Object.keys(SampleChildren).map(sampleChild =>
+              <option key={sampleChild}>{sampleChild}</option>)}
+          </select>
+        </p>
+        <p>
+          <label htmlFor="columns">{columns} columns</label>
+          <input
+            name="columns"
+            type="range"
+            value={columns}
+            min="5"
+            max="20"
+            onChange={(e) => setColumns(e.target.value)} />
+        </p>
+        <p>
+          <label htmlFor="columns">{rows} rows</label>
+          <input
+            name="rows"
+            type="range"
+            value={rows}
+            min="5"
+            max="20"
+            onChange={(e) => setRows(e.target.value)} />
+        </p>
+        <p>
+          <label htmlFor="columns">Cell Width: {cellWidth}</label>
+          <input
+            name="cellWidth"
+            type="range"
+            value={cellWidth}
+            min="20"
+            max="200"
+            step="10"
+            onChange={(e) => setCellWidth(e.target.value)} />
+        </p>
+        <p>
+          <label htmlFor="columns">Cell Height: {cellHeight}</label>
+          <input
+            name="cellHeight"
+            type="range"
+            value={cellHeight}
+            min="20"
+            max="200"
+            step="10"
+            onChange={(e) => setCellHeight(e.target.value)} />
+        </p>
+        <p>
+          <label htmlFor="columns">Cell Padding: {cellPadding}</label>
+          <input
+            name="cellPadding"
+            type="range"
+            value={cellPadding}
+            min="0"
+            max="40"
+            step="5"
+            onChange={(e) => setCellPadding(e.target.value)} />
+        </p>
+      </Sidebar>
+
+      <Meshmerize
+        columns={columns}
+        rows={rows}
+        cellWidth={`${cellWidth}px`}
+        cellHeight={`${cellHeight}px`}
+        cellPadding={`${cellPadding}px`}>
+
+        <RotateTransform deg={i => 25 * i}>
+          <OpacityTransform>
+            <SelectedChild />
+          </OpacityTransform>
+        </RotateTransform>
+
+      </Meshmerize>
+
+      {/* <Meshmerize
+        columns="40"
+        rows="10"
+        cellWidth="30px"
+        cellHeight="30px">
+
         <OpacityTransform>
           <ScaleTransform size={i => Math.random().toFixed(2)}>
-            <DomLine />
+            <DomCircle />
           </ScaleTransform>
         </OpacityTransform>
-      </RotateTransform>
 
-    </Meshmerize>
+      </Meshmerize>
 
-    <Meshmerize
-      columns="40"
-      rows="10"
-      cellWidth="30px"
-      cellHeight="30px">
+      <Meshmerize
+        columns="8"
+        rows="8"
+        cellWidth="80px"
+        cellHeight="80px"
+        cellPadding="10px">
 
-      <OpacityTransform>
-        <ScaleTransform size={i => Math.random().toFixed(2)}>
-          <DomCircle />
-        </ScaleTransform>
-      </OpacityTransform>
+        <OpacityTransform align="bottom right">
+          <DomLine />
+        </OpacityTransform>
 
-    </Meshmerize>
+        <OpacityTransform align="bottom left">
+          <DomLine />
+        </OpacityTransform>
 
-    <Meshmerize
-      columns="8"
-      rows="8"
-      cellWidth="80px"
-      cellHeight="80px"
-      cellPadding="10px">
-
-      <OpacityTransform align="bottom right">
-        <DomLine />
-      </OpacityTransform>
-
-      <OpacityTransform align="bottom left">
-        <DomLine />
-      </OpacityTransform>
-
-    </Meshmerize>
-  </>
-)
+      </Meshmerize> */}
+    </>
+  )
+}
 
 export default IndexPage
